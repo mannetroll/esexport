@@ -1,0 +1,13 @@
+Configuration:
+  Appenders:
+    Console:
+      Name: Console_Appender
+      Target: SYSTEM_OUT
+      PatternLayout:
+        #Pattern: "%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS}}  %-4p %4L --- [%20.20t] %magenta{%-40.40C} : %m%n%wEx"
+        Pattern: "%blue{%-12d{HH:mm:ss.SSS} %-5p} %-40m %highlight{ | %l} [%t] %n"
+  Loggers:
+    Root:
+      Level: info
+      AppenderRef:
+        - Ref: Console_Appender
