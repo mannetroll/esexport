@@ -1,11 +1,11 @@
 # EXPORT / IMPORT #
 
     $ mvn -U clean install 
-    $ cp target/esexport-too.jar .
+    $ cp target/esexport-tool.jar .
 
 ### Export
 
-    $ ./esexport-too.jar export logstash-2024.02.01
+    $ ./esexport-tool.jar export logstash-2024.02.01
  
     or
     $ mvn spring-boot:run -Dspring-boot.run.arguments="export,logstash-2024.02.01"
