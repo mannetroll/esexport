@@ -16,8 +16,6 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSS</maven.build.timestamp.format>
     <buildDate>${maven.build.timestamp}</buildDate>
-    <source.level>1.8</source.level>
-    <target.level>1.8</target.level>
     <httpclient.version>4.5</httpclient.version>
     <log4j2.version>2.17.0</log4j2.version>
     <start-class>com.mannetroll.elastic.ExportImportApp</start-class>
@@ -95,14 +93,12 @@
           <junitArtifactName>junit:junit</junitArtifactName>
         </configuration>
       </plugin>
-      <plugin>
+	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.8.0</version>
         <configuration>
-          <source>${source.level}</source>
-          <target>${target.level}</target>
-          <encoding>${project.build.sourceEncoding}</encoding>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
