@@ -189,8 +189,8 @@ public class JestClientExporter {
                 pos += size;
                 if ((pos % 1000) == 0) {
                     long elapsed = System.currentTimeMillis() - start;
-                    LOG.info((pos) + ": fps: " + (new Float(1000f * pos / elapsed)).intValue() + "  "
-                            + (new Float(100f * pos / countAllQuery)).intValue() + "%");
+                    LOG.info((pos) + ": fps: " + (Float.valueOf(1000f * pos / elapsed)).intValue() + "  "
+                            + (Float.valueOf(100f * pos / countAllQuery)).intValue() + "%");
                 }
             }
             this.clearScroll(result);

@@ -186,12 +186,12 @@ public class ExportImportApp extends AbstractThreadApp implements CommandLineRun
 				if ((localwrites++ % 6000) == 0) {
 					long elapsed = System.currentTimeMillis() - localstart;
 					LOG.info("localwrites: " + localwrites + ", fps: "
-							+ Float.valueOf(new Float(1000f * localwrites / elapsed)).intValue() + ", " + filename);
+							+ Float.valueOf(Float.valueOf(1000f * localwrites / elapsed)).intValue() + ", " + filename);
 				}
 				if ((count++ % 2000) == 0) {
 					// break;
 					long elapsed = System.currentTimeMillis() - start;
-					LOG.info("FPS @ " + count + ": " + Float.valueOf(new Float(1000f * count / elapsed)).intValue());
+					LOG.info("FPS @ " + count + ": " + Float.valueOf(Float.valueOf(1000f * count / elapsed)).intValue());
 				}
 			}
 			// rest request
