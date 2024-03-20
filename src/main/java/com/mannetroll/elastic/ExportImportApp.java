@@ -35,7 +35,7 @@ import com.mannetroll.elastic.imp.ImportConfig;
 import com.mannetroll.elastic.imp.elastic.IndexDocument;
 import com.mannetroll.elastic.imp.elastic.JestServiceImpl;
 import com.mannetroll.elastic.imp.enrich.JsonUtil;
-import com.mannetroll.metrics.util.LogKeys;
+import com.mannetroll.metrics.LogKeys;
 
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
