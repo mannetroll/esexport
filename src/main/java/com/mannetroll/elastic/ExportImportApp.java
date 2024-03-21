@@ -62,7 +62,7 @@ public class ExportImportApp extends AbstractThreadApp implements CommandLineRun
 
 	static {
 		logstash = logstash.withZone(DateTimeZone.forID("GMT"));
-		ThreadContext.put(LogKeys.NANOTIME, String.valueOf(System.nanoTime()));
+		ThreadContext.put(LogKeys.METRICS_NANOTIME, String.valueOf(System.nanoTime()));
 	}
 
 	JestClient jestClientImport() {
@@ -191,7 +191,8 @@ public class ExportImportApp extends AbstractThreadApp implements CommandLineRun
 				if ((count++ % 2000) == 0) {
 					// break;
 					long elapsed = System.currentTimeMillis() - start;
-					LOG.info("FPS @ " + count + ": " + Float.valueOf(Float.valueOf(1000f * count / elapsed)).intValue());
+					LOG.info(
+							"FPS @ " + count + ": " + Float.valueOf(Float.valueOf(1000f * count / elapsed)).intValue());
 				}
 			}
 			// rest request
