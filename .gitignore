@@ -52,3 +52,4 @@ Thumbs.db
 /nohup.out
 /application*.yaml
 /exports/
+/templates/

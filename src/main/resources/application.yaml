@@ -2,12 +2,12 @@
 import.eshost: http://127.0.0.1:9200
 import.cluster: 00000000000000000000000000000000
 import.shield: user:pass
-import.bulkSize: 1000
+import.bulkSize: 5000
 import.rows: 10000000
 #
 export.eshost: http://127.0.0.1:9200
 export.cluster: 11111111111111111111111111111111
 export.shield: user:pass
-export.batch: 2000
+export.batch: 5000
 export.max: 10000000
 export.sort: false
