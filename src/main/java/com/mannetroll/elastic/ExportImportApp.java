@@ -28,6 +28,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.github.vanroy.springboot.autoconfigure.data.jest.ElasticsearchJestAutoConfiguration;
 import com.mannetroll.elastic.exp.ExportSettings;
 import com.mannetroll.elastic.exp.JestClientExporter;
 import com.mannetroll.elastic.imp.AbstractThreadApp;
@@ -46,7 +47,7 @@ import io.searchbox.client.http.JestHttpClient;
 /**
  * @author mannetroll
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = ElasticsearchJestAutoConfiguration.class)
 public class ExportImportApp extends AbstractThreadApp implements CommandLineRunner {
 	private static final Logger LOG = LogManager.getLogger(ExportImportApp.class);
 	private static ConfigurableApplicationContext context;
