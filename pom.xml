@@ -17,7 +17,7 @@
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSS</maven.build.timestamp.format>
     <buildDate>${maven.build.timestamp}</buildDate>
     <httpclient.version>4.5</httpclient.version>
-    <log4j2.version>2.17.0</log4j2.version>
+    <log4j2.version>2.19.0</log4j2.version>
     <start-class>com.mannetroll.elastic.ExportImportApp</start-class>
   </properties>
   <dependencies>
@@ -53,18 +53,22 @@
       </exclusions>
     </dependency>
     <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-layout-template-json</artifactId>
+      <version>2.23.1</version>
+    </dependency>	  
+    <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-yaml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-joda</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <version>${httpclient.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.mannetroll.logging</groupId>
-      <artifactId>metricslog</artifactId>
-      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
