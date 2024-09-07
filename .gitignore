@@ -53,3 +53,4 @@ Thumbs.db
 /application*.yaml
 /exports/
 /templates/
+/split/
