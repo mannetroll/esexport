@@ -4,7 +4,7 @@ Configuration:
       Name: Console_Appender
       Target: SYSTEM_OUT
       PatternLayout:
-        Pattern: "%-12d{HH:mm:ss.SSS} %-5p %-40m | %l [%t] %n"
+        Pattern: "%-12d{HH:mm:ss.SSS} %-5p %-40m [%t] %-40.40c{1.} %n"
   Loggers:
     Root:
       Level: info
