@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class ExportSettings {
     private String eshost;
     private String cluster;
+	private String apikey;
     private String shield;
     private Integer batch;
     private Integer max;
@@ -64,4 +65,12 @@ public class ExportSettings {
         return sort;
     }
 
+	public String getApikey() {
+		return apikey;
+	}
+
+	public void setApikey(String apikey) {
+		this.apikey = apikey;
+	}
+	
 }

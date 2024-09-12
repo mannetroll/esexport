@@ -91,8 +91,15 @@ public class ExportImportApp extends AbstractThreadApp implements CommandLineRun
 		LOG.info("cluster: " + cluster);
 		List<Header> headers = new ArrayList<Header>();
 		headers.add(new BasicHeader("X-Found-Cluster", cluster));
+		
+		String apikey = exportSettings.getApikey();
+		if (apikey != null) {
+			headers.add(new BasicHeader("Authorization", "ApiKey " + apikey));						
+		} else {
 		String basic = new String(Base64.encodeBase64(exportSettings.getShield().getBytes()));
 		headers.add(new BasicHeader("Authorization", "Basic " + basic));
+		}
+		
 		JestClientFactory factory = new JestClientFactory() {
 			@Override
 			protected HttpClientBuilder configureHttpClient(HttpClientBuilder builder) {

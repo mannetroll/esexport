@@ -1,0 +1,30 @@
+#
+# _rollup
+#
+PUT _rollup/job/varnish_rpm_by_cache
+{
+	"index_pattern": "ls-varnish-20*",
+	"rollup_index": "varnish-rpm-rollup-by-cache",
+	"cron": "0 * * * * ?",
+	"page_size": 50000,
+	"groups": {
+		"date_histogram": {
+			"field": "@timestamp",
+			"fixed_interval": "1m",
+			"delay": "4h"
+		},
+		"terms": {
+			"fields": [
+				"stream_cache.raw"
+			]
+		}
+	},
+	"metrics": [
+		{
+			"field": "http_status",
+			"metrics": [
+				"value_count"
+			]
+		}
+	]
+}
