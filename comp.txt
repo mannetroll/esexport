@@ -11,7 +11,32 @@ nohup time -p ./esexport-tool.jar import 10 ./split/ ls-varnish-2024.09.06 &
 # 10 THREAD, refresh_interval: 30s
 #
 V4: ls-varnish-2024.09.06-001934 1 10000000 15.1gb, Fields (231), (text & keywords), Speed 23K - 19K #/s
-
 V5: ls-varnish-2024.09.06-001934 1 10000000 13.3gb, Fields (133), (only keywords), Speed 38K - 30K #/s
-
 V6: ls-varnish-2024.09.06-001934 1 10000000 13.5gb, Fields (138), (mix with properties), Speed 35K - 29K #/s
+
+
+AS-IS:
+Varnish: 37.5 TB / 3 days = 12.5 TB/day
+Mandel:   8.7 TB / 7 days = 1.25 TB/day
+APM:        5 TB / 7 days = 0.73 TB/day
+Other:      4 TB
+         --------
+         ~ 55 TB
+
+Current 15% of 10 TB RAM and 850 TB DISC
+1.5TB RAM -> 122TB DISK can be used to 75% -> 92TB
+
+
+TO-BE:
+Varnish 1 dayy = 12.5 TB + 10 days frozen or LOKI
+Mandel: 3 days = 3.75 TB +  4 days frozen or LOKI
+APM:    3 days =  2.2 TB +  4 days frozen or LOKI
+Other:              4 TB
+                 --------
+                 ~ 20 TB
+                 
+If 92TB cost X MSEK -> 20TB cost ~ X/5 MSEK
+
+
+
+
