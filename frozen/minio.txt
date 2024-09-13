@@ -1,0 +1,39 @@
+brew install minio/stable/minio
+brew install minio/stable/mc
+nohup /opt/homebrew/opt/minio/bin/minio server --certs-dir\=/opt/homebrew/etc/minio/certs --address\=:9000 /opt/homebrew/var/minio &
+
+open http://localhost:49384
+
+GET _snapshot/minio-repository
+
+DELETE _snapshot/minio-repository
+
+PUT _snapshot/minio-repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "minio-snapshots",
+    "endpoint": "localhost:9000",
+    "protocol": "http",
+    "base_path": "snapshots",
+    "access_key": "minioadmin",
+    "secret_key": "minioadmin"
+  }
+}
+
+PUT _snapshot/minio-repository/snapshot_1?wait_for_completion=true
+GET _snapshot/minio-repository/snapshot_1
+
+echo "-Des.allow_insecure_settings=true" >> /usr/share/elasticsearch/config/jvm.options
+
+#s3.client.default.access_key: "minioadmin"
+#s3.client.default.secret_key: "minioadmin"
+s3.client.default.endpoint: "http://localhost:9000"
+s3.client.default.protocol: "http"
+
+127.0.0.1       minio-snapshots.localhost
+
+mc alias set esminio http://localhost:9000 minioadmin minioadmin
+mc ls esminio
+mc ls esminio/snapshots
+mc ls esminio/snapshots/indices

@@ -1,0 +1,21 @@
+{
+	"policy": {
+		"phases": {
+			"hot": {
+				"min_age": "0ms",
+				"actions": {
+				}
+			}
+		},
+		"frozen": {
+			"min_age": "10m",
+			"actions": {
+				"searchable_snapshot": {
+					"snapshot_repository": "minio-repository",
+					"force_merge_index": true
+				}
+			}
+		}
+	}
+}
+}

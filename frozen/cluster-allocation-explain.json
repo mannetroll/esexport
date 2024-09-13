@@ -1,0 +1,57 @@
+{
+	"note": "No shard was specified in the explain API request, so this response explains a randomly chosen unassigned shard. There may be other unassigned shards in this cluster which cannot be assigned for different reasons. It may not be possible to assign this shard until one of the other shards is assigned correctly. To explain the allocation of other shards (whether assigned or unassigned) you must specify the target shard in the request to this API.",
+	"index": "partial-ls-varnish-2024.09.06-001934",
+	"shard": 0,
+	"primary": true,
+	"current_state": "unassigned",
+	"unassigned_info": {
+		"reason": "NEW_INDEX_RESTORED",
+		"at": "2024-09-12T23:31:28.178Z",
+		"details": "restore_source[minio-repository/2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq]",
+		"last_allocation_status": "no"
+	},
+	"can_allocate": "no",
+	"allocate_explanation": "Elasticsearch isn't allowed to allocate this shard to any of the nodes in the cluster. Choose a node to which you expect this shard to be allocated, find this node in the node-by-node explanation, and address the reasons which prevent Elasticsearch from allocating this shard there.",
+	"node_allocation_decisions": [
+		{
+			"node_id": "15zk7g5IQBKz5ii-KVhAjg",
+			"node_name": "Farin.local",
+			"transport_address": "127.0.0.1:9300",
+			"node_attributes": {
+				"ml.allocated_processors_double": "10.0",
+				"ml.allocated_processors": "10",
+				"ml.machine_memory": "68719476736",
+				"transform.config_version": "10.0.0",
+				"xpack.installed": "true",
+				"ml.config_version": "12.0.0",
+				"ml.max_jvm_size": "4294967296"
+			},
+			"roles": [
+				"data",
+				"data_cold",
+				"data_content",
+				"data_frozen",
+				"data_hot",
+				"data_warm",
+				"ingest",
+				"master",
+				"ml",
+				"remote_cluster_client",
+				"transform"
+			],
+			"node_decision": "no",
+			"deciders": [
+				{
+					"decider": "searchable_snapshots_enable",
+					"decision": "NO",
+					"explanation": "no allocations of searchable snapshots allowed during rolling restart due to [cluster.routing.allocation.enable=primaries] and [xpack.searchable.snapshot.allocate_on_rolling_restart=false]"
+				},
+				{
+					"decider": "has_frozen_cache",
+					"decision": "NO",
+					"explanation": "node setting [xpack.searchable.snapshot.shared_cache.size] is set to zero, so shards of partially mounted indices cannot be allocated to this node"
+				}
+			]
+		}
+	]
+}

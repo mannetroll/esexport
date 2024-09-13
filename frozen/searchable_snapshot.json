@@ -1,0 +1,207 @@
+{
+	"indices": {
+		"ls-varnish-2024.09.06-001934": {
+			"index": "ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "13.11m",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "13.11m",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "searchable_snapshot",
+			"action_time_millis": 1726181711279,
+			"step": "wait-for-shard-history-leases",
+			"step_time_millis": 1726181711279,
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+},
+{
+	"indices": {
+		"ls-varnish-2024.09.06-001934": {
+			"index": "ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "31.84m",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "31.84m",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "searchable_snapshot",
+			"action_time_millis": 1726181711279,
+			"step": "forcemerge",
+			"step_time_millis": 1726182911327,
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+},
+{
+	"indices": {
+		"ls-varnish-2024.09.06-001934": {
+			"index": "ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "37.81m",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "37.81m",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "searchable_snapshot",
+			"action_time_millis": 1726181711279,
+			"step": "segment-count",
+			"step_time_millis": 1726183218587,
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+},
+{
+	"indices": {
+		"ls-varnish-2024.09.06-001934": {
+			"index": "ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "42.34m",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "42.34m",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "searchable_snapshot",
+			"action_time_millis": 1726181711279,
+			"step": "create-snapshot",
+			"step_time_millis": 1726183511386,
+			"repository_name": "minio-repository",
+			"snapshot_name": "2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq",
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+},
+{
+	"indices": {
+		"ls-varnish-2024.09.06-001934": {
+			"index": "ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "48.6m",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "48.6m",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "searchable_snapshot",
+			"action_time_millis": 1726181711279,
+			"step": "wait-for-index-color",
+			"step_time_millis": 1726183888184,
+			"repository_name": "minio-repository",
+			"snapshot_name": "2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq",
+			"step_info": {
+				"message": "index is not green; not all shards are active"
+			},
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+},
+{
+	"indices": {
+		"partial-ls-varnish-2024.09.06-001934": {
+			"index": "partial-ls-varnish-2024.09.06-001934",
+			"managed": true,
+			"policy": "frozen_policy",
+			"index_creation_date_millis": 1726181018844,
+			"time_since_index_creation": "1.08h",
+			"lifecycle_date_millis": 1726181018844,
+			"age": "1.08h",
+			"phase": "frozen",
+			"phase_time_millis": 1726181711279,
+			"action": "complete",
+			"action_time_millis": 1726181711279,
+			"step": "complete",
+			"step_time_millis": 1726184701881,
+			"repository_name": "minio-repository",
+			"snapshot_name": "2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq",
+			"phase_execution": {
+				"policy": "frozen_policy",
+				"phase_definition": {
+					"min_age": "10m",
+					"actions": {
+						"searchable_snapshot": {
+							"snapshot_repository": "minio-repository",
+							"force_merge_index": true
+						}
+					}
+				},
+				"version": 7,
+				"modified_date_in_millis": 1726180908598
+			}
+		}
+	}
+}

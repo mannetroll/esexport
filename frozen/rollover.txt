@@ -1,0 +1,150 @@
+GET _snapshot/minio-repository
+
+DELETE _snapshot/minio-repository
+
+PUT _snapshot/minio-repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "minio-snapshots",
+    "endpoint": "localhost:9000",
+    "protocol": "http",
+    "base_path": "snapshots",
+    "access_key": "minioadmin",
+    "secret_key": "minioadmin"
+  }
+}
+
+PUT _snapshot/minio-repository/snapshot_1?wait_for_completion=true
+GET _snapshot/minio-repository/snapshot_1
+
+
+GET _license
+GET _cat/indices?v
+GET _cat/indices?v&s=i&h=index,pri,docs.count,store.size,dataset.size
+GET ls-varnish-2024.09.06-001934/_ilm/explain
+
+POST /varnish/_rollover?pretty
+GET ls-varnish-2024.09.06-001934/_mapping
+GET _cat/templates?v&s=t&h=name,index_patterns
+
+DELETE ls-varnish-2024.09.06-001935
+
+GET ls-varnish-2024.09.06-001934/_search
+{
+  "query": {
+    "match": {
+      "user_agent": "hub"
+    }
+  }
+}
+
+#
+# _aliases
+#
+GET _alias/varnish
+GET _aliases
+
+#
+# ILM
+#
+GET /_ilm/policy/frozen_policy
+PUT /_ilm/policy/frozen_policy
+{
+	"policy": {
+		"phases": {
+			"hot": {
+				"min_age": "0ms",
+				"actions": {
+					"rollover": {
+						"max_age": "5m"
+					}
+				}
+			},
+			"frozen": {
+				"min_age": "5m",
+				"actions": {
+					"searchable_snapshot": {
+						"snapshot_repository": "minio-repository",
+						"force_merge_index": true
+					}
+				}
+			}
+		}
+	}
+}
+
+
+GET _template/ls_varnish_v4
+
+PUT _template/ls_varnish_v4
+{
+	"index_patterns": [
+		"ls-varnish-*"
+	],
+	"mappings": {
+		"dynamic_templates": [
+			{
+				"geoPoint_field": {
+					"match": "geoPoint",
+					"mapping": {
+						"type": "geo_point"
+					}
+				}
+			},
+			{
+				"ip_template": {
+					"match": "ip",
+					"mapping": {
+						"type": "ip"
+					}
+				}
+			},
+			{
+				"string_fields": {
+					"match_mapping_type": "string",
+					"mapping": {
+						"fields": {
+							"raw": {
+								"ignore_above": 256,
+								"type": "keyword"
+							}
+						},
+						"type": "text"
+					}
+				}
+			}
+		],
+		"properties": {
+			"geoPoint": {
+				"type": "geo_point"
+			},
+			"geoip": {
+				"properties": {
+					"location": {
+						"type": "geo_point"
+					}
+				}
+			}
+		}
+	},
+	"settings": {
+		"index": {
+			"mapping": {
+				"total_fields": {
+					"limit": "1000"
+				}
+			},
+			"lifecycle.name": "frozen_policy",
+			"lifecycle.rollover_alias": "varnish",
+			"refresh_interval": "30s",
+			"number_of_shards": "1",
+			"number_of_replicas": "0"
+		}
+	},
+	"aliases": {
+		"varnish": {
+			"is_write_index": true
+		}
+	}
+}

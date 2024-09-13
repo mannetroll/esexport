@@ -1,0 +1,244 @@
+$ tcpflow -p -c -i lo0 port 9000 | grep -oE '(GET|POST|HEAD) .*'
+ 
+GET /snapshots/indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__5z9na9RxRMyEV18ouxw9jQ HTTP/1.1
+GET /snapshots/indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__5z9na9RxRMyEV18ouxw9jQ HTTP/1.1
+GET /snapshots/indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__5z9na9RxRMyEV18ouxw9jQ HTTP/1.1
+
+[2024-09-13T00:55:11,379][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"hot","action":"complete","name":"complete"}] to [{"phase":"frozen","action":"unfollow","name":"branch-check-unfollow-prerequisites"}] in policy [frozen_policy]
+[2024-09-13T00:55:11,429][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"unfollow","name":"branch-check-unfollow-prerequisites"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"branch-check-prerequisites"}] in policy [frozen_policy]
+[2024-09-13T00:55:11,433][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"branch-check-prerequisites"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"check-not-write-index"}] in policy [frozen_policy]
+[2024-09-13T00:55:11,434][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"check-not-write-index"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-shard-history-leases"}] in policy [frozen_policy]
+[2024-09-13T01:05:11,381][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-shard-history-leases"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"check-ts-end-time-passed"}] in policy [frozen_policy]
+[2024-09-13T01:07:33,678][INFO ][o.e.c.s.ClusterSettings  ] [Farin.local] updating [cluster.routing.allocation.enable] from [all] to [primaries]
+[2024-09-13T01:07:33,679][INFO ][o.e.c.s.ClusterSettings  ] [Farin.local] updating [cluster.routing.allocation.enable] from [all] to [primaries]
+[2024-09-13T01:15:11,417][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"check-ts-end-time-passed"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"branch-check-existing-snapshot"}] in policy [frozen_policy]
+[2024-09-13T01:15:11,467][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"branch-check-existing-snapshot"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"forcemerge"}] in policy [frozen_policy]
+[2024-09-13T01:20:18,612][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"forcemerge"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"segment-count"}] in policy [frozen_policy]
+[2024-09-13T01:25:11,388][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"segment-count"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"generate-snapshot-name"}] in policy [frozen_policy]
+[2024-09-13T01:25:11,468][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"generate-snapshot-name"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"cleanup-snapshot"}] in policy [frozen_policy]
+[2024-09-13T01:25:11,502][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"cleanup-snapshot"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"create-snapshot"}] in policy [frozen_policy]
+[2024-09-13T01:25:11,565][INFO ][o.e.s.SnapshotsService   ] [Farin.local] snapshot [minio-repository:2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq/i7D9hWo5RNmfEBTCIbZwbw] started
+[2024-09-13T01:25:16,468][INFO ][o.e.c.m.MetadataMappingService] [Farin.local] [.ds-ilm-history-5-2024.08.31-000001/rEozc5UOSj2eogptiqKo5g] update_mapping [_doc]
+[2024-09-13T01:30:00,137][INFO ][o.e.x.m.MlDailyMaintenanceService] [Farin.local] triggering scheduled [ML] maintenance tasks
+[2024-09-13T01:30:00,150][INFO ][o.e.x.m.a.TransportDeleteExpiredDataAction] [Farin.local] Deleting expired data
+[2024-09-13T01:30:00,177][INFO ][o.e.x.m.j.r.UnusedStatsRemover] [Farin.local] Successfully deleted [0] unused stats documents
+[2024-09-13T01:30:00,177][INFO ][o.e.x.m.a.TransportDeleteExpiredDataAction] [Farin.local] Completed deletion of expired ML data
+[2024-09-13T01:30:00,177][INFO ][o.e.x.m.MlDailyMaintenanceService] [Farin.local] Successfully completed [ML] maintenance task: triggerDeleteExpiredDataTask
+[2024-09-13T01:31:28,097][INFO ][o.e.s.SnapshotsService   ] [Farin.local] snapshot [minio-repository:2024.09.12-ls-varnish-2024.09.06-001934-frozen_policy-38gipmcasvegvdaaz3sdeq/i7D9hWo5RNmfEBTCIbZwbw] completed with state [SUCCESS]
+[2024-09-13T01:31:28,098][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"create-snapshot"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-data-tier"}] in policy [frozen_policy]
+[2024-09-13T01:31:28,124][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-data-tier"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"mount-snapshot"}] in policy [frozen_policy]
+[2024-09-13T01:31:28,208][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"mount-snapshot"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-index-color"}] in policy [frozen_policy]
+[2024-09-13T01:31:28,233][INFO ][o.e.c.r.a.AllocationService] [Farin.local] current.health="RED" message="Cluster health status changed from [YELLOW] to [RED] (reason: [snapshot shard size updated])." previous.health="YELLOW" reason="snapshot shard size updated"
+
+
+[2024-09-13T01:44:59,388][INFO ][o.e.h.n.s.HealthNodeTaskExecutor] [Farin.local] Node [{Farin.local}{15zk7g5IQBKz5ii-KVhAjg}] is selected as the current health node.
+[2024-09-13T01:45:01,508][INFO ][o.e.c.r.a.AllocationService] [Farin.local] current.health="YELLOW" message="Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[.apm-source-map][0]]])." previous.health="RED" reason="shards started [[.apm-source-map][0]]"
+[2024-09-13T01:45:01,595][INFO ][o.e.c.m.MetadataCreateIndexService] [Farin.local] [.snapshot-blob-cache] creating index, cause [auto(bulk api)], templates [], shards [1]/[1]
+[2024-09-13T01:45:01,599][INFO ][o.e.c.r.a.AllocationService] [Farin.local] updating number_of_replicas to [0] for indices [.snapshot-blob-cache]
+[2024-09-13T01:45:02,044][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"wait-for-index-color"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"copy-execution-state"}] in policy [frozen_policy]
+[2024-09-13T01:45:02,052][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"copy-execution-state"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"copy-settings"}] in policy [frozen_policy]
+[2024-09-13T01:45:02,057][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"copy-settings"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"branch-on-datastream-check"}] in policy [frozen_policy]
+[2024-09-13T01:45:02,057][INFO ][o.e.x.i.IndexLifecycleTransition] [Farin.local] moving index [ls-varnish-2024.09.06-001934] from [{"phase":"frozen","action":"searchable_snapshot","name":"branch-on-datastream-check"}] to [{"phase":"frozen","action":"searchable_snapshot","name":"swap-aliases"}] in policy [frozen_policy]
+[2024-09-13T01:45:02,095][INFO ][o.e.c.r.a.AllocationService] [Farin.local] current.health="GREEN" message="Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[.snapshot-blob-cache][0]]])." previous.health="YELLOW" reason="shards started [[.snapshot-blob-cache][0]]"
+[2024-09-13T01:45:02,150][INFO ][o.e.c.m.MetadataDeleteIndexService] [Farin.local] [ls-varnish-2024.09.06-001934/LrpOxxC2RhCsJ2NitOUKGQ] deleting index
+
+
+drtobbe@Farin:~/Elastic/v8.12.1/elasticsearch-8.12.1$ mc ls -r esminio/snapshots
+[2024-09-13 01:31:28 CEST]   703B STANDARD index-0
+[2024-09-13 01:31:28 CEST]     8B STANDARD index.latest
+[2024-09-13 01:25:11 CEST]    65B STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__-DaA_JQSRjKOz9W6HqD2YQ
+[2024-09-13 01:25:11 CEST]  32KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__0kbKX7YJSL2RSGXrRmXh-A
+[2024-09-13 01:31:27 CEST] 9.8GiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__5z9na9RxRMyEV18ouxw9jQ
+[2024-09-13 01:25:11 CEST]  16KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__6osmQF96R6KGwzkcXjn5ag
+[2024-09-13 01:26:12 CEST] 336MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__9SqCx4Y5T-qDE6lEA-KFMw
+[2024-09-13 01:25:11 CEST]  15KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__9lmE7PmUR-W638eKQlswIg
+[2024-09-13 01:25:11 CEST]   104B STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__AzvZ3KjIQuyTEO_3Su9NuQ
+[2024-09-13 01:26:35 CEST] 556MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__EP_b4oGVR-6KyX_HEEgeoQ
+[2024-09-13 01:25:12 CEST] 2.8MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__KEYd3SpVQqKl5yedy8ohXg
+[2024-09-13 01:25:11 CEST] 3.5KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__KPd_p6XVRvuB-2-BJtUnKg
+[2024-09-13 01:27:47 CEST] 1.5GiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__QQ9Z-Zd_QTKA4Fnuswyl-A
+[2024-09-13 01:25:11 CEST]  27KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__RirNhxPCS4SQzi7AH5-mTw
+[2024-09-13 01:26:10 CEST] 322MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__TsgOB7lUSvGolK1ygwel6A
+[2024-09-13 01:25:11 CEST]    65B STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__Vh8M6SuARSikavE_2d5I6Q
+[2024-09-13 01:27:58 CEST] 1.7GiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__Wa2WqaBfQsqpaAqj5nkKhA
+[2024-09-13 01:25:11 CEST] 2.1KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__e5O6ciSJQHu__gEBGN9Htw
+[2024-09-13 01:25:11 CEST] 1.3MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__i_x8m9pESKWgZt7bnXP6gw
+[2024-09-13 01:25:14 CEST]  12MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__lr42sDBWSu-S0kWnjtPuRg
+[2024-09-13 01:25:11 CEST]   269B STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__rVdD4R0XQOqiP2kaxVYUzA
+[2024-09-13 01:25:27 CEST]  75MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__smAL1ivvRIeN8k6-_OJcNw
+[2024-09-13 01:26:16 CEST] 366MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__utT_aAg_RB2RTXdE7Cys1A
+[2024-09-13 01:25:11 CEST] 1.7MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__yg-iG7J1SGuUfOuQK9nrNg
+[2024-09-13 01:25:13 CEST] 5.7MiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/__zgQnde2QR2uX2sfC3SyW_Q
+[2024-09-13 01:25:11 CEST] 1.9KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/index-_fOzl7oIRtOWf6hIP-PCAw
+[2024-09-13 01:31:27 CEST] 1.8KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/0/snap-i7D9hWo5RNmfEBTCIbZwbw.dat
+[2024-09-13 01:31:28 CEST] 1.9KiB STANDARD indices/e5n-34ysQ5aJUIzMdrFg_Q/meta-86KT6JEB0eU7u86R1JCY.dat
+[2024-09-13 01:31:28 CEST]   212B STANDARD meta-i7D9hWo5RNmfEBTCIbZwbw.dat
+[2024-09-13 01:31:28 CEST]   375B STANDARD snap-i7D9hWo5RNmfEBTCIbZwbw.dat
+[2024-09-12 23:28:56 CEST]    22B STANDARD tests-ToQm4m-CTNy1pL41z-soIA/data-15zk7g5IQBKz5ii-KVhAjg.dat
+[2024-09-12 23:28:56 CEST]    22B STANDARD tests-ToQm4m-CTNy1pL41z-soIA/master.dat
+
+
+GET _snapshot/minio-repository
+
+DELETE _snapshot/minio-repository
+
+PUT _snapshot/minio-repository
+{
+  "type": "s3",
+  "settings": {
+    "bucket": "minio-snapshots",
+    "endpoint": "localhost:9000",
+    "protocol": "http",
+    "base_path": "snapshots",
+    "access_key": "minioadmin",
+    "secret_key": "minioadmin"
+  }
+}
+
+PUT _snapshot/minio-repository/snapshot_1?wait_for_completion=true
+GET _snapshot/minio-repository/snapshot_1
+
+
+GET _license
+GET _cat/indices?v
+ls-varnish-2024.09.06-001934 1 10000000 15.1gb
+
+GET _cat/indices?v&s=i&h=index,pri,docs.count,store.size,dataset.size
+# index                                pri docs.count store.size dataset.size
+# partial-ls-varnish-2024.09.06-001934   1   10000000         0b       14.5gb
+
+GET ls-varnish-2024.09.06-001934/_ilm/explain
+
+GET _cat/segments/ls-varnish-2024.09.06-001934?v
+# index                        shard prirep ip        segment generation docs.count docs.deleted   size size.memory committed searchable version compound
+# ls-varnish-2024.09.06-001934 0     p      127.0.0.1 _id            661   10000000            0 14.5gb           0 true      true       9.9.2   false
+
+
+PUT ls-varnish-2024.09.06-001934/_settings
+{
+  "index.lifecycle.indexing_complete": true
+}
+PUT /_cluster/settings
+{
+  "persistent": {
+    "cluster.routing.allocation.enable": "all"
+  }
+}
+
+DELETE ls-varnish-2024.09.06-001934
+GET ls-varnish-2024.09.06-001934/_mapping
+GET _cat/templates?v&s=t&h=name,index_patterns
+
+
+GET /_cluster/health?pretty
+GET /_cat/shards?v
+GET /_cat/nodes?v
+
+GET ls-varnish-2024.09.06-001934/_search
+{
+  "query": {
+    "match": {
+      "user_agent": "hub"
+    }
+  }
+}
+
+#
+# _aliases
+#
+GET _alias/varnish
+GET _aliases
+
+#
+# ILM
+#
+GET _ilm/policy/frozen_policy
+PUT _ilm/policy/frozen_policy
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "min_age": "0ms",
+        "actions": {}
+      },
+      "frozen": {
+        "min_age": "10m",
+        "actions": {
+          "searchable_snapshot": {
+            "snapshot_repository": "minio-repository",
+            "force_merge_index": true
+          }
+        }
+      }
+    }
+  }
+}
+
+
+GET _template/ls_varnish_v4
+PUT _template/ls_varnish_v4
+{
+	"index_patterns": [
+		"ls-varnish-*"
+	],
+	"mappings": {
+		"dynamic_templates": [
+			{
+				"geoPoint_field": {
+					"match": "geoPoint",
+					"mapping": {
+						"type": "geo_point"
+					}
+				}
+			},
+			{
+				"ip_template": {
+					"match": "ip",
+					"mapping": {
+						"type": "ip"
+					}
+				}
+			},
+			{
+				"string_fields": {
+					"match_mapping_type": "string",
+					"mapping": {
+						"fields": {
+							"raw": {
+								"ignore_above": 256,
+								"type": "keyword"
+							}
+						},
+						"type": "text"
+					}
+				}
+			}
+		],
+		"properties": {
+			"geoPoint": {
+				"type": "geo_point"
+			},
+			"geoip": {
+				"properties": {
+					"location": {
+						"type": "geo_point"
+					}
+				}
+			}
+		}
+	},
+	"settings": {
+		"index": {
+			"mapping": {
+				"total_fields": {
+					"limit": "1000"
+				}
+			},
+			"lifecycle.name": "frozen_policy",
+			"refresh_interval": "30s",
+			"number_of_shards": "1",
+			"number_of_replicas": "0"
+		}
+	}
+}
+
