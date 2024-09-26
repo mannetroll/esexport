@@ -1,0 +1,70 @@
+{
+	"index_patterns": [
+		"ls-varnish-*"
+	],
+	"mappings": {
+		"dynamic_templates": [
+			{
+				"geoPoint_field": {
+					"match": "geoPoint",
+					"mapping": {
+						"type": "geo_point"
+					}
+				}
+			},
+			{
+				"ip_template": {
+					"match": "ip",
+					"mapping": {
+						"type": "ip"
+					}
+				}
+			},
+			{
+				"string_fields": {
+					"match_mapping_type": "string",
+					"mapping": {
+						"fields": {
+							"raw": {
+								"ignore_above": 256,
+								"type": "keyword"
+							}
+						},
+						"type": "text"
+					}
+				}
+			}
+		],
+		"properties": {
+			"geoPoint": {
+				"type": "geo_point"
+			},
+			"geoip": {
+				"properties": {
+					"location": {
+						"type": "geo_point"
+					}
+				}
+			}
+		}
+	},
+	"settings": {
+		"index": {
+			"mapping": {
+				"total_fields": {
+					"limit": "1000"
+				}
+			},
+			"lifecycle.name": "frozen_policy",
+			"lifecycle.rollover_alias": "varnish",
+			"refresh_interval": "30s",
+			"number_of_shards": "1",
+			"number_of_replicas": "0"
+		}
+	},
+	"aliases": {
+		"varnish": {
+			"is_write_index": true
+		}
+	}
+}
