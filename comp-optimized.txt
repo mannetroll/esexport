@@ -1,0 +1,14 @@
+Elasticsearch v8.12.1 (Lucene v9.9.2)
+
+mvn -U clean install spring-boot:run
+cp target/esexport-tool.jar .
+curl -XDELETE http://localhost:9200/ls-varnish-2024.09.26-002525
+
+nohup time -p ./esexport-tool.jar import 10 ./split/ ls-varnish-2024.09.26-002525- &
+
+#
+# 10 THREAD
+#
+ls-varnish-2024.09.26-002525 1 10000000 15.0gb, Fields (227), (text & keywords), Speed 20K - 26K #/s
+ls-varnish-2024.09.26-002525 1 10000000 13.0gb, Fields (131), ( only keywords ), Speed 30K - 36K #/s
+ls-varnish-2024.09.26-002525 1 10000000 13.1gb, Fields (138), (   optimized   ), Speed 33K - 41K #/s

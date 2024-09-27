@@ -49,7 +49,7 @@ Thumbs.db
 *.wmv
 
 /application.*
-/nohup.out
+/*.out
 /application*.yaml
 /exports/
 /templates/
