@@ -2,6 +2,8 @@ package com.mannetroll.elastic.imp.enrich;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -65,4 +67,19 @@ public class JsonUtil {
 		}
 	}
 
+	public static String indent(String queryString) {
+		Map<String, Object> tmp = JsonUtil.parse(queryString);
+		return JsonUtil.toPretty(tmp);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> parse(String json) {
+		Map<String, Object> dto = new TreeMap<String, Object>();
+		try {
+			dto = mapper.readValue(json, Map.class);
+		} catch (IOException e) {
+			LOGGER.info(e.getMessage(), e);
+		}
+		return dto;
+	}
 }

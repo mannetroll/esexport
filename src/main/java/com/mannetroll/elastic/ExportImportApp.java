@@ -79,7 +79,7 @@ public class ExportImportApp extends AbstractThreadApp implements CommandLineRun
 			}
 		};
 		Builder builder = new HttpClientConfig.Builder(eshost).multiThreaded(true).discoveryEnabled(false)
-				.connTimeout(1000).readTimeout(30000);
+				.connTimeout(5000).readTimeout(60000);
 		factory.setHttpClientConfig(builder.build());
 		return (JestHttpClient) factory.getObject();
 	}

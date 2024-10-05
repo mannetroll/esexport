@@ -8,6 +8,7 @@ import.rows: 10000000
 export.eshost: http://127.0.0.1:9200
 export.cluster: 11111111111111111111111111111111
 export.shield: user:pass
+export.apikey: Z3pvWH....
 export.batch: 5000
 export.max: 10000000
 export.sort: false
