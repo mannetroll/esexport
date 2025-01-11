@@ -41,4 +41,28 @@ PUT _index_template/my-index-template
      }
   }
 }
-``
+```
+
+### Logstash
+
+```
+output {
+  elasticsearch {
+    id => "ls-varnish"
+    hosts => ["https://21b91997abb54c98b27ea866211f1126.elastic.tele2.net:9243"]
+    user => "es-tv-tech-prod-write"
+    password => "*********************"
+    ssl_verification_mode => "none"
+
+    # This sets Elasticsearch's op_type to 'create'
+    action => "create"
+
+    index => "ls-varnish_alias6"
+    template => "/opt/logstash-custom/templates/ls-varnish-v4.json"
+    template_api => "composable"
+    template_name => "ls-varnish-v4"
+    template_overwrite => "true"
+  }
+}
+```
+
