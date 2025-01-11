@@ -23,6 +23,8 @@ import io.searchbox.core.Bulk.Builder;
 import io.searchbox.core.BulkResult;
 import io.searchbox.core.BulkResult.BulkResultItem;
 import io.searchbox.core.Index;
+import io.searchbox.indices.CreateIndex;
+import io.searchbox.indices.IndicesExists;
 import io.searchbox.indices.settings.GetSettings;
 
 /**
@@ -54,18 +56,49 @@ public class JestServiceImpl {
 		}
 	}
 
+	public void checkOrCreateIndex(String indexName) {
+		try {
+			// 1. Check if the index exists
+			IndicesExists indicesExists = new IndicesExists.Builder(indexName).build();
+			JestResult existsResult = jestClient.execute(indicesExists);
+			if (!existsResult.isSucceeded()) {
+				// 2. If the index does not exist, create it
+				CreateIndex createIndex = new CreateIndex.Builder(indexName).build();
+				JestResult createResult = jestClient.execute(createIndex);
+				if (createResult.isSucceeded()) {
+					LOG.info("Index \"" + indexName + "\" created successfully.");
+				} else {
+					LOG.info("Failed to create index \"" + indexName + "\": " + createResult.getErrorMessage());
+				}
+			} else {
+				LOG.info("Index \"" + indexName + "\" already exists.");
+			}
+		} catch (IOException e) {
+			System.err.println("IOException occurred while checking/creating index: " + e.getMessage());
+		}
+	}
+
 	public void toElasticSearchBulk(List<IndexDocument> bulk, int retry) {
 		String index = "";
 		try {
 			Builder bulkRequest = new Bulk.Builder();
 			for (IndexDocument doc : bulk) {
 				index = doc.getIndex();
-				bulkRequest.addAction(new Index.Builder(toJson(doc.getSource())).index(index).id(doc.getId()).build());
+				bulkRequest.addAction(new Index.Builder(toJson(doc.getSource())).index(index).id(doc.getId())
+						.setParameter("op_type", "create") // only write ops with an op_type of create are allowed in
+															// data streams"
+						.build());
 			}
 			BulkResult execute = jestClient.execute(bulkRequest.build());
 			String errorMessage = execute.getErrorMessage();
 			if (errorMessage != null) {
 				LOG.info("errorMessage: " + errorMessage);
+				LOG.info("execute: " + execute);
+				List<BulkResultItem> items = execute.getItems();
+				LOG.info("Items: " + execute.getItems().size());
+				for (BulkResultItem bri : items) {
+					LOG.info("bulkResultItem: " + bri.errorReason + ": " + bri.index + ": " + bri.id);
+				}
 				List<BulkResultItem> failedItems = execute.getFailedItems();
 				LOG.info("FailedItems: " + execute.getFailedItems().size());
 				for (BulkResultItem bri : failedItems) {
