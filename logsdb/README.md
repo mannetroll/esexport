@@ -49,7 +49,7 @@ PUT _index_template/my-index-template
 output {
   elasticsearch {
     id => "ls-varnish"
-    hosts => ["https://21b91997abb54c98b27ea866211f1126.elastic.tele2.net:9243"]
+    hosts => ["https://21b91997abb54c98b27ea866211f1126.elastic.net"]
     user => "es-tv-tech-prod-write"
     password => "*********************"
     ssl_verification_mode => "none"
