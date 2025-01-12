@@ -74,7 +74,7 @@ public class JestServiceImpl {
 				LOG.info("Index \"" + indexName + "\" already exists.");
 			}
 		} catch (IOException e) {
-			System.err.println("IOException occurred while checking/creating index: " + e.getMessage());
+			LOG.error("IOException occurred while checking/creating index: " + e.getMessage());
 		}
 	}
 
