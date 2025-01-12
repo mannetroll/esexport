@@ -1,0 +1,17 @@
+#
+# SPLIT
+#
+gunzip ls-varnish-2024.09.06-001934-20240906.txt.gz 
+split -l 1000000 ls-varnish-2024.09.06-001934-20240906.txt ls-varnish-2024.09.06-001934-
+rm ls-varnish-2024.09.06-001934-20240906.txt
+gzip *
+
+
+#
+# 2024.09.26
+#
+cp ../ls-varnish-2024.09.26-002525-20240926.txt.gz .
+gunzip ls-varnish-2024.09.26-002525-20240926.txt.gz
+split -l 1000000 ls-varnish-2024.09.26-002525-20240926.txt ls-varnish-2024.09.26-002525-
+rm ls-varnish-2024.09.26-002525-20240926.txt
+gzip ls-varnish-2024.09.26-002525-*
