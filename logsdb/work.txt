@@ -1,5 +1,5 @@
 #
-# v8.17.0
+# v8.17.0 (50M)
 #
 mvn spring-boot:run -Dspring-boot.run.arguments="import,1,./exports,ls-varnish-2025.01.11-"
 nohup time -p ./esexport-tool.jar import 1 ./exports/ ls-varnish-2025.01.11 &
@@ -10,18 +10,21 @@ V4: ls-varnish-2025.01.11-001603 12 50000000 83.8gb, Fields (141), Speed 38K #/s
 17G  ls-varnish-2025.01.11-001603-20250112.txt.gz
 156G ls-varnish-2025.01.11-001603-20250112.txt
 
-
+GET _cat/indices?s=i&v&h=index,pri,docs.count,dataset.size
+index                                                              pri docs.count dataset.size
+.ds-logsdb-varnish-2025.01.11-001603-2025.01.12-000001              12   50000000       25.4gb
+ls-varnish-2025.01.11-001603                                        12   50000000       64.5gb
 
 
 #
-# v8.16.1
+# v8.16.1 (5M)
 #
 index                                                              pri docs.count dataset.size
 .ds-logsdb-varnish-2025.01.11-001599-2025.01.11-000001               1    5000000        2.2gb
 ls-varnish-2025.01.11-001599                                         1    5000000        6.8gb
 
 #
-# v8.17.0
+# v8.17.0 (5M)
 #
 index                                                              pri docs.count dataset.size
 .ds-logsdb-varnish-2025.01.11-001599-2025.01.11-000001               1    5000000        2.1gb
@@ -30,9 +33,6 @@ ls-varnish-2025.01.11-001599                                         1    500000
 #
 #
 #
-GET _stats/store
-GET _cat/indices?s=i&v&h=index,pri,docs.count,dataset.size
-
 GET _index_template/ls-varnish-v4
 GET _index_template/logsdb-varnish-v4
 
