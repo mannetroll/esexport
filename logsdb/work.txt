@@ -1,0 +1,127 @@
+#
+# v8.17.0
+#
+mvn spring-boot:run -Dspring-boot.run.arguments="import,1,./exports,ls-varnish-2025.01.11-"
+nohup time -p ./esexport-tool.jar import 1 ./exports/ ls-varnish-2025.01.11 &
+real 1602.19
+
+V4: ls-varnish-2025.01.11-001603 12 50000000 83.8gb, Fields (141), Speed 38K #/s
+
+17G  ls-varnish-2025.01.11-001603-20250112.txt.gz
+156G ls-varnish-2025.01.11-001603-20250112.txt
+
+
+
+
+#
+# v8.16.1
+#
+index                                                              pri docs.count dataset.size
+.ds-logsdb-varnish-2025.01.11-001599-2025.01.11-000001               1    5000000        2.2gb
+ls-varnish-2025.01.11-001599                                         1    5000000        6.8gb
+
+#
+# v8.17.0
+#
+index                                                              pri docs.count dataset.size
+.ds-logsdb-varnish-2025.01.11-001599-2025.01.11-000001               1    5000000        2.1gb
+ls-varnish-2025.01.11-001599                                         1    5000000        6.7gb
+
+#
+#
+#
+GET _stats/store
+GET _cat/indices?s=i&v&h=index,pri,docs.count,dataset.size
+
+GET _index_template/ls-varnish-v4
+GET _index_template/logsdb-varnish-v4
+
+POST _reindex?wait_for_completion=false
+{
+  "source": {
+    "index": "ls-varnish-2025.01.11-001603",
+    "size": 10000    
+  },
+  "dest": {
+    "index": "logsdb-varnish-2025.01.11-001603",
+    "op_type": "create"
+  }
+}
+
+
+PUT _index_template/my-index-template
+{
+  "data_stream": { },
+  "template": {
+     "settings": {
+        "index.mode": "logsdb" 
+     }
+  }
+}
+
+GET _tasks?actions=*reindex&detailed
+
+{
+  "nodes": {
+    "jfg1UXpDSVm__obMnBpprQ": {
+      "name": "Farin.local",
+      "transport_address": "127.0.0.1:9300",
+      "host": "127.0.0.1",
+      "ip": "127.0.0.1:9300",
+      "roles": [
+        "data",
+        "data_cold",
+        "data_content",
+        "data_frozen",
+        "data_hot",
+        "data_warm",
+        "ingest",
+        "master",
+        "ml",
+        "remote_cluster_client",
+        "transform"
+      ],
+      "attributes": {
+        "ml.machine_memory": "68719476736",
+        "transform.config_version": "10.0.0",
+        "xpack.installed": "true",
+        "ml.config_version": "12.0.0",
+        "ml.max_jvm_size": "33285996544",
+        "ml.allocated_processors_double": "10.0",
+        "ml.allocated_processors": "10"
+      },
+      "tasks": {
+        "jfg1UXpDSVm__obMnBpprQ:83519": {
+          "node": "jfg1UXpDSVm__obMnBpprQ",
+          "id": 83519,
+          "type": "transport",
+          "action": "indices:data/write/reindex",
+          "status": {
+            "total": 50000000,
+            "updated": 0,
+            "created": 49990000,
+            "deleted": 0,
+            "batches": 5000,
+            "version_conflicts": 0,
+            "noops": 0,
+            "retries": {
+              "bulk": 0,
+              "search": 0
+            },
+            "throttled_millis": 0,
+            "requests_per_second": -1,
+            "throttled_until_millis": 0
+          },
+          "description": "reindex from [ls-varnish-2025.01.11-001603] to [logsdb-varnish-2025.01.11-001603]",
+          "start_time_in_millis": 1736699128647,
+          "running_time_in_nanos": 4707979076792,
+          "cancellable": true,
+          "cancelled": false,
+          "headers": {
+            "trace.id": "baefc10b5df264afcd668e114e3ce627"
+          }
+        }
+      }
+    }
+  }
+}
